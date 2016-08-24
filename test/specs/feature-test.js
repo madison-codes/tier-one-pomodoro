@@ -20,14 +20,13 @@ describe('Welcome page, button functionality', function(){
     assert.equal(buttonStatus, false);
   });
 
-  it('start butten should be disabled on click of start button', function() {
+  it('start button should be disabled on click of start button', function() {
     browser.click('#start-button');
     var buttonStatus = browser.isEnabled('#start-button');
     assert.equal(buttonStatus, false);
   });
 
-
-  it('pause butten enabled on click of start button', function() {
+  it('pause button enabled on click of start button', function() {
     browser.click('#start-button');
     var buttonStatus = browser.isEnabled('#pause-button');
     assert.equal(buttonStatus, true);
