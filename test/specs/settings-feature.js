@@ -15,18 +15,6 @@ describe('settings options', function() {
     assert(breakTimeInput.isExisting(''));
   });
 
-  it('should register the value of the input for setting pomodoro time', function() {
-    var pomodoroTimeInput = browser.element('#focus-time-input');
-    pomodoroTimeInput.setValue('25:00');
-    assert.equal(pomodoroTimeInput.getValue(), '25:00');
-  });
-
-  it('should register the value of the input for setting pomodoro time', function() {
-    var breakTimeInput = browser.element('#break-time-input');
-    breakTimeInput.setValue('5:00');
-    assert.equal(breakTimeInput.getValue(), '5:00');
-  });
-
   it('should disable focus submit button if input field is empty', function() {
     var pomodoroTimeInput = browser.element('#focus-time-input');
     var buttonStatus = browser.isEnabled('#set-focus-submit');
@@ -35,8 +23,22 @@ describe('settings options', function() {
   });
 
   it('should disable break submit button if input field is empty', function() {
+    var pomoduroTimeInput = browser.element('#break-time-input');
     var buttonStatus = browser.isEnabled('#set-break-submit');
+    pomoduroTimeInput.setValue('');
     assert.equal(buttonStatus, false);
+  });
+
+  it('should register the value of the input for setting pomodoro focus time', function() {
+    var pomodoroTimeInput = browser.element('#focus-time-input');
+    pomodoroTimeInput.setValue('25:00');
+    assert.equal(pomodoroTimeInput.getValue(), '25:00');
+  });
+
+  it('should register the value of the input for setting pomodoro break time', function() {
+    var breakTimeInput = browser.element('#break-time-input');
+    breakTimeInput.setValue('5:00');
+    assert.equal(breakTimeInput.getValue(), '5:00');
   });
 
   it('should enable focus submit button if input field has value', function() {
@@ -47,12 +49,11 @@ describe('settings options', function() {
   });
 
   it('should enable break submit button if input field has value', function() {
+    var pomoduroBreakInput = browser.element('#break-time-input');
     var buttonStatus = browser.isEnabled('#set-break-submit');
-    var breakTimeInput = browser.element('#break-time-input');
-    breakTimeInput.setValue('5:00');
+    pomoduroBreakInput.setValue('5:00');
     assert.equal(buttonStatus, true);
   });
-
 
 
 });
