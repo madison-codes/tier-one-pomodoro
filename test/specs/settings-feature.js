@@ -55,5 +55,4 @@ describe('settings options', function() {
     assert.equal(buttonStatus, true);
   });
 
-
 });

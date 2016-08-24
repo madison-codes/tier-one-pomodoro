@@ -2,12 +2,15 @@
 const assert = require('assert');
 
 describe('Welcome page, button functionality', function(){
-  // timer = new Timer();
-  // let time = new
     browser.url('/');
   it('should be able to grab the page title', function(){
   	var title = browser.getTitle();
   	assert.equal(title, 'Pomodoro');
+  });
+
+  it('should have a pragraph tag to display the remaining countdown time', function() {
+    var timer = browser.element('#display-count-down');
+    assert(timer.isExisting(''));
   });
 
   it('start button should be enabled on game start', function() {
@@ -31,13 +34,7 @@ describe('Welcome page, button functionality', function(){
     var buttonStatus = browser.isEnabled('#pause-button');
     assert.equal(buttonStatus, true);
   });
-
 });
-
-//   it('should set the time property of the object called timer to the given value', function() {
-//     timer.time = 2;
-//   });
-// });
 
 // A default setting of 25 minutes of work followed by 5 minutes of break.
 // The ability to set custom lengths of time for both work and breaks.
