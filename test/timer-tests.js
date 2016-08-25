@@ -1,6 +1,8 @@
 const assert = require('chai').assert;
-const Timer = require('./chatroom');
+const Timer = require('/../lib/timer');
 
-// describe('Timer', function() {
-//   it('should take a time ')
-// })
+describe('Timer', function() {
+  it('should be a function', function() {
+    assert.isFunction(Timer);
+  });
+});
