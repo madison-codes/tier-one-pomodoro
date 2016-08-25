@@ -14,13 +14,12 @@ describe('Timer', function() {
     timer.checkTimeInput(input);
     assert.equal(timer.focusTimeDuration, 1500000);
   });
-  
+
   it('should be able to set a duration', function() {
     var input = 1000;
     timer.setDuration(input);
     assert.equal(timer.focusTimeDuration, 60000000);
   });
-
 
   it('should check the time input and set a duration based on user input', function() {
 

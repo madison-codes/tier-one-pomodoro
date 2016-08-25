@@ -23,9 +23,9 @@ describe('settings options', function() {
   });
 
   it('should disable break submit button if input field is empty', function() {
-    var pomoduroTimeInput = browser.element('#break-time-input');
+    var pomodoroTimeInput = browser.element('#break-time-input');
     var buttonStatus = browser.isEnabled('#set-break-submit');
-    pomoduroTimeInput.setValue('');
+    pomodoroTimeInput.setValue('');
     assert.equal(buttonStatus, false);
   });
 
@@ -49,9 +49,9 @@ describe('settings options', function() {
   });
 
   it('should enable break submit button if input field has value', function() {
-    var pomoduroBreakInput = browser.element('#break-time-input');
+    var pomodoroBreakInput = browser.element('#break-time-input');
     var buttonStatus = browser.isEnabled('#set-break-submit');
-    pomoduroBreakInput.setValue('5:00');
+    pomodoroBreakInput.setValue('5:00');
     assert.equal(buttonStatus, true);
   });
 
