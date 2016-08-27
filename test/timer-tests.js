@@ -52,4 +52,5 @@ describe('Timer', function() {
     assert.equal(stopTime, 'time has stopped');
   });
 
+
 });
