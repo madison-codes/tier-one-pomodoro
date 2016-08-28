@@ -14,7 +14,7 @@ describe('Timer', function() {
     });
 
   context('1', function(){
-    var timer = new Timer();
+    var timer = new Timer({duration: 20});
 
     it('should be a function', function() {
       assert.isFunction(Timer);
@@ -39,7 +39,7 @@ describe('Timer', function() {
     });
   });
   context('2', function(){
-    var timer = new Timer();
+    var timer = new Timer(20);
 
     it('should return false if the timer start function has not been started', function(){
       var outcome = timer.hasStarted();
@@ -65,7 +65,7 @@ describe('Timer', function() {
     });
   });
   context('time expired', function() {
-    var timer = new Timer();
+    var timer = new Timer(20);
 
     it('should return true if the time remaining is less than 0', function() {
       timer.remaining = () => -1;
@@ -79,9 +79,10 @@ describe('Timer', function() {
   });
 
   context('local storage', function() {
-    var timer = new Timer();
+    var timer = new Timer(20);
 
     it('should save the timer in local storage with the key value timer', function() {
+      timer.save();
       var stored = JSON.parse(localStorage.getItem('timer'));
       assert.equal(stored.duration, timer.duration);
     });
