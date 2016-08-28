@@ -79,7 +79,7 @@ describe('Timer', function() {
   });
 
   context('local storage', function() {
-    var timer = new Timer(20);
+    var timer = new Timer('20', 'work');
 
     it('should save the timer in local storage with the key value timer', function() {
       timer.save();
