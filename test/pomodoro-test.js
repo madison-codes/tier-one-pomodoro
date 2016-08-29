@@ -131,6 +131,26 @@ describe('Pomodoro', function() {
     });
   });
 
+  context('long rest object', function(){
+    var array = Pomodoro.pomodoroArray;
+    var duration = 2;
+
+    it('should create a new default work object', function(){
+      Pomodoro.createLongRestTimer(duration);
+      assert.equal(array.length, 2);
+    });
+
+    it('should have a duration of 25 min', function(){
+      Pomodoro.createLongRestTimer(duration);
+      assert.equal(array[1].duration, 6);
+    });
+
+    it('should have a session of work', function(){
+      Pomodoro.createLongRestTimer(duration);
+      assert.equal(array[1].session, 'rest');
+    });
+  });
+
 });
 
 //
