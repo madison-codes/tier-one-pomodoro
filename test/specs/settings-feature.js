@@ -31,27 +31,27 @@ describe('settings options', function() {
 
   it('should register the value of the input for setting pomodoro focus time', function() {
     var pomodoroTimeInput = browser.element('#focus-time-input');
-    pomodoroTimeInput.setValue('25:00');
-    assert.equal(pomodoroTimeInput.getValue(), '25:00');
+    pomodoroTimeInput.setValue(25);
+    assert.equal(pomodoroTimeInput.getValue(), 25);
   });
 
   it('should register the value of the input for setting pomodoro break time', function() {
     var breakTimeInput = browser.element('#break-time-input');
-    breakTimeInput.setValue('5:00');
-    assert.equal(breakTimeInput.getValue(), '5:00');
+    breakTimeInput.setValue(5);
+    assert.equal(breakTimeInput.getValue(), 5);
   });
 
   it('should enable focus submit button if input field has value', function() {
     var buttonStatus = browser.isEnabled('#set-focus-submit');
     var focusTimeInput = browser.element('#focus-time-input');
-    focusTimeInput.setValue('10:00');
+    focusTimeInput.setValue(10);
     assert.equal(buttonStatus, true);
   });
 
   it('should enable break submit button if input field has value', function() {
     var pomodoroBreakInput = browser.element('#break-time-input');
     var buttonStatus = browser.isEnabled('#set-break-submit');
-    pomodoroBreakInput.setValue('5:00');
+    pomodoroBreakInput.setValue(5);
     assert.equal(buttonStatus, true);
   });
 
