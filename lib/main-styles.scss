@@ -7,7 +7,6 @@ $tan: #FFEBCD;
 
 $number-font:'Rozha One', serif;
 $font-main: 'Alegreya Sans', sans-serif;
-// $font-accent:
 $background-img: url(/lib/img/garden.png) no-repeat;
 $menu-icon: url(/lib/img/menu-setting.svg) no-repeat;
 
@@ -17,7 +16,6 @@ $menu-icon: url(/lib/img/menu-setting.svg) no-repeat;
   padding: 40px;
   padding-left: 40px;
   margin-top: 20px;
-  // opacity: .8;
 }
 
 body {
@@ -70,8 +68,9 @@ q {
   font-size: 1.4rem;
   padding-top: 7%;
   width: 90%;
-
+  text-align: center;
 }
+
 #date{
   border: 2px solid black;
   width: 30px;

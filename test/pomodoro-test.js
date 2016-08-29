@@ -26,15 +26,9 @@ describe('Pomodoro', function() {
       var pomodoroLength = 2;
       assert.equal(pomodoroLength, 2);
     });
-
-    it('should have a variable that sets array length to 2', function() {
-      var pomodoroLength = 2;
-      assert.equal(pomodoroLength, 2);
-    });
   });
 
   context('pomoduroArray', function(){
-      var array = Pomodoro.pomodoroArray;
       array.push(new Timer(25, 'work'));
 
     it('should add a new timer to pomodoro array', function() {
@@ -73,7 +67,6 @@ describe('Pomodoro', function() {
   });
 
   context('default work object', function(){
-    var array = Pomodoro.pomodoroArray;
 
     it('should create a new default work object', function(){
       assert.equal(array.length, 1);
@@ -91,7 +84,6 @@ describe('Pomodoro', function() {
   });
 
   context('default rest object', function(){
-    var array = Pomodoro.pomodoroArray;
 
     it('should create a new default work object', function(){
       assert.equal(array.length, 1);
@@ -109,7 +101,7 @@ describe('Pomodoro', function() {
   });
 
   context('custom work object', function(){
-    var array = Pomodoro.pomodoroArray;
+
     var duration = 20;
 
     it('should create a new default work object', function(){
@@ -128,7 +120,7 @@ describe('Pomodoro', function() {
   });
 
   context('custom rest object', function(){
-    var array = Pomodoro.pomodoroArray;
+
     var duration = 20;
 
     it('should create a new default work object', function(){
@@ -147,7 +139,7 @@ describe('Pomodoro', function() {
   });
 
   context('long rest object', function(){
-    var array = Pomodoro.pomodoroArray;
+
     var duration = 2;
 
     it('should create a new default work object', function(){
