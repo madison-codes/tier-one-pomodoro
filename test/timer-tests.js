@@ -13,7 +13,7 @@ describe('Timer', function() {
       Date.now = this.dateNow;
     });
 
-  context('1', function(){
+  context('instantiate timer', function(){
     var timer = new Timer({duration: 20});
 
     it('should be a function', function() {
@@ -38,7 +38,7 @@ describe('Timer', function() {
       assert.equal(end, expected);
     });
   });
-  context('2', function(){
+  context('methods of timer', function(){
     var timer = new Timer(20);
 
     it('should return false if the timer start function has not been started', function(){
@@ -64,6 +64,7 @@ describe('Timer', function() {
       assert.equal(remaining, expected);
     });
   });
+
   context('time expired', function() {
     var timer = new Timer(20);
 

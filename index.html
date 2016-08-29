@@ -3,16 +3,30 @@
   <head>
     <meta charset="utf-8">
     <title>Pomodoro</title>
+    <meta name="viewport" content="width=device-width">
+    <link href="https://fonts.googleapis.com/css?family=Rozha+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans" rel="stylesheet">
   </head>
   <body>
     <header>
-      <a href="settings.html" id="settings-link">Settings</a>
+      <a href="settings.html" class="settings-link"></a>
     </header>
-    <h1>Pomodoro</h1>
-    <p aria-labelledby="timer" id="display-count-down"><p>
-    <button aria-labelledby="start" id="start-button">START</button>
-    <button aria-labelledby="start" id="pause-button" disabled>PAUSE</button>
-    <button aria-labelledby="start" id="resume-button">RESUME</button>
+    <main>
+      <section id='display-time'>
+        <p aria-labelledby="timer" id="display-count-down">3:30<p>
+        <p id="display-action">tap to pause</p>
+      </section>
+      <!-- <button aria-labelledby="start" id="start-button">START</button>
+      <button aria-labelledby="start" id="pause-button" disabled>PAUSE</button>
+      <button aria-labelledby="start" id="resume-button">RESUME</button> -->
+      <q>Be the change you wish to see in the world</q>
+      <section id="date">
+        <p id="month">AUG</p>
+        <p id="day">28</p>
+      </section>
+    </main>
+    <footer>
+    </footer>
     <script src="main.bundle.js"></script>
   </body>
 </html>
