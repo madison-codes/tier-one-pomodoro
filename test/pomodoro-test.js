@@ -57,6 +57,21 @@ describe('Pomodoro', function() {
     });
   });
 
+  context('long rest object', function(){
+
+    it('should return false if workcount is not 4', function(){
+      Pomodoro.createDefaultWorkTimer();
+      assert.isFalse(Pomodoro.longBreak());
+    });
+
+    it('return true if workcount is 4', function(){
+      Pomodoro.createDefaultWorkTimer();
+      Pomodoro.createDefaultWorkTimer();
+      Pomodoro.createDefaultWorkTimer();
+      assert.isTrue(Pomodoro.longBreak());
+    });
+  });
+
   context('default work object', function(){
     var array = Pomodoro.pomodoroArray;
 
@@ -150,18 +165,4 @@ describe('Pomodoro', function() {
       assert.equal(array[1].session, 'rest');
     });
   });
-
 });
-
-//
-// it('should set the new timer work duration to the default duration', function() {
-//   var last = array.length - 1;
-//   Pomodoro.add('work');
-//   assert.equal(array[last].duration, 25 * 60000);
-// });
-//
-// it('should set the new timer rest duration to the default duration', function() {
-//   var last = array.length - 1;
-//   Pomodoro.add('rest');
-//   assert.equal(array[last].duration, 5 * 60000);
-// });
