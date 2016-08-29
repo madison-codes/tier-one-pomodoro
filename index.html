@@ -11,21 +11,24 @@
     <header>
       <a href="settings.html" class="settings-link"></a>
     </header>
-    <!-- <nav id="setting-menu">
+    <nav id="setting-menu">
       <input type="number" id="focus-time-input">
       <button id="set-focus-submit" disabled>Focus</button>
       <input type="number" id="break-time-input">
       <button id="set-break-submit" disabled>Break</button>
       <script src="main.bundle.js"></script>
-    </nav> -->
+    </nav>
     <main>
-      <section id='display-time'>
-        <p aria-labelledby="timer" id="display-count-down"><p>
-        <p id="display-action">tap to pause</p>
-      </section>
-      <button aria-labelledby="start" id="start-button">START</button>
-      <button aria-labelledby="start" id="pause-button" disabled>PAUSE</button>
-      <button aria-labelledby="start" id="resume-button">RESUME</button>
+      <button aria-labelledby="start" class="start-button timer-button">
+        <p aria-labelledby="timer" class="display-start display-count-down"></p>
+        <p class="display-action">tap to start</p>
+      </button>
+
+      <button aria-labelledby="pause" class="pause-button timer-button" type="hidden">
+        <p aria-labelledby="timer" class="display-pause display-count-down"></p>
+        <p class="display-action">tap to pause</p>
+      </button>
+
       <q>Be the change you wish to see in the world</q>
       <section id="date">
         <p id="month">AUG</p>

@@ -13,7 +13,7 @@ describe('Welcome page, button functionality', function(){
     assert(timer.isExisting(''));
   });
 
-  it('start button should be enabled on game start', function() {
+  it('timer button should not have class pause on game start', function() {
     var buttonStatus = browser.isEnabled('#start-button');
     assert.equal(buttonStatus, true);
   });
@@ -23,10 +23,9 @@ describe('Welcome page, button functionality', function(){
     assert.equal(buttonStatus, false);
   });
 
-  it('start button should be disabled on click of start button', function() {
+  it('start button should be hidden on click of start button', function() {
     browser.click('#start-button');
-    var buttonStatus = browser.isEnabled('#start-button');
-    assert.equal(buttonStatus, false);
+    assert.equal('#startButton'.hide(), true);
   });
 
   it('pause button enabled on click of start button', function() {
