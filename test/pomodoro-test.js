@@ -4,12 +4,13 @@ const Timer = require('../lib/timer');
 
 describe('Pomodoro', function() {
   var array = Pomodoro.pomodoroArray;
+
   beforeEach(function() {
-    array.push(new Timer());
+    Pomodoro.pomodoroArray = [new Timer()];
   });
 
   afterEach(function() {
-    array.splice(0, array.length);
+    Pomodoro.pomodoroArray = [];
   });
 
   context('instantiate timer within TimerRoom array', function(){
