@@ -19,13 +19,16 @@
       <script src="main.bundle.js"></script>
     </nav> -->
     <main>
-      <section id='display-time'>
-        <p aria-labelledby="timer" id="display-count-down"><p>
-        <p id="display-action">tap to pause</p>
-      </section>
-      <button aria-labelledby="start" id="start-button">START</button>
-      <button aria-labelledby="start" id="pause-button" disabled>PAUSE</button>
-      <button aria-labelledby="start" id="resume-button">RESUME</button>
+      <button aria-labelledby="start" class="start-button timer-button">
+        <p aria-labelledby="timer" class="display-start display-count-down">25:00<p>
+        <p class="display-action">tap to start</p>
+      </button>
+
+      <button aria-labelledby="pause" class="pause-button timer-button" visibility="hidden">
+        <p aria-labelledby="timer" class="display-pause display-count-down">3:30<p>
+        <p class="display-action">tap to pause</p>
+      </button>
+
       <q>Be the change you wish to see in the world</q>
       <section id="date">
         <p id="month">AUG</p>
