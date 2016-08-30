@@ -13,38 +13,36 @@ $menu-icon: url(/lib/img/menu-setting.svg) no-repeat;
 .settings-link{
   background: $menu-icon;
   background-position: bottom;
+  margin-top: 20px;
   padding: 40px;
   padding-left: 40px;
-  margin-top: 20px;
 }
 
 body {
   background: $background-img;
-  background-position: top;
   background-color: white transparent;
+  background-position: top;
   margin: 0;
   padding: 0;
 }
 
 main {
-  display: flex;
-  justify-content: center;
   align-items: center;
+  display: flex;
   flex-direction: column;
   height: 94vh;
+  justify-content: center;
 }
 
-// main timer
-
 .timer-button {
-  display: flex;
-  justify-content: center;
   align-items: center;
-  flex-direction: column;
+  background-color: $light-pink;
   border: 1px solid $dark-pink;
   border-radius: 50%;
-  background-color: $light-pink;
+  display: flex;
+  flex-direction: column;
   height: 40vh;
+  justify-content: center;
   width: 40vh;
 }
 
@@ -56,53 +54,53 @@ main {
 }
 
 .display-action{
-  margin: 0px;
-  padding: 0px;
-  font-family: $font-main;
   color: white;
+  font-family: $font-main;
   font-size: 1.5rem;
-  opacity: .9;
+  margin: 0px;
   margin-top: -25px;
+  opacity: .9;
+  padding: 0px;
 }
 
 q {
-  font-family: $font-main;
   color: $dark-pink;
+  font-family: $font-main;
   font-size: 1.4rem;
   padding-top: 7%;
-  width: 90%;
   text-align: center;
+  width: 90%;
 }
 
 #date{
+  background-color: rgba(255, 255, 255, .8);
   border: 2px solid black;
-  width: 30px;
   height: 30px;
   margin-top: 50px;
-  background-color: rgba(255, 255, 255, .8);
+  width: 30px;
 
 }
 #month, #day{
-  color: black;
-  font-family: $font-main;
-  display: flex;
-  justify-content: center;
   align-items: center;
+  color: black;
+  display: flex;
   flex-wrap: wrap;
-  padding: 0;
-  margin: 0;
+  font-family: $font-main;
   font-size: .8rem;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
 }
 
 footer {
+  align-content: center;
   background-color: $light-pink;
-  height: 5vh;
-  width: 100%;
-  font-family: $font-main;
+  bottom: 0;
   color: white;
   display: flex;
-  align-content: center;
-  bottom: 0;
+  font-family: $font-main;
+  height: 5vh;
+  width: 100%;
 }
 
 @media screen and (max-width: 550px){
