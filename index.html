@@ -8,17 +8,20 @@
     <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans" rel="stylesheet">
   </head>
   <body>
+
     <header>
       <a href="settings.html" class="settings-link"></a>
     </header>
+
     <nav id="setting-menu">
       <input type="number" id="focus-time-input">
-      <button id="set-focus-submit" disabled>Focus</button>
+      <button id="set-focus-submit">Focus</button>
       <input type="number" id="break-time-input">
       <button id="set-break-submit" disabled>Break</button>
       <script src="main.bundle.js"></script>
     </nav>
     <main>
+
       <button aria-labelledby="start" class="start-button timer-button">
         <p aria-labelledby="timer" class="display-start display-count-down"></p>
         <p class="display-action">tap to start</p>
@@ -28,6 +31,8 @@
         <p aria-labelledby="timer" class="display-pause display-count-down"></p>
         <p class="display-action">tap to pause</p>
       </button>
+      
+      <button id="audio">SOUND</button>
 
       <q>Be the change you wish to see in the world</q>
       <section id="date">

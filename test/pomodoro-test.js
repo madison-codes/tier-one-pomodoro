@@ -30,7 +30,7 @@ describe('Pomodoro', function() {
   });
 
   context('pomoduroArray', function(){
-      array.push(new Timer(25, 'work'));
+      // array.push(new Timer(25, 'work'));
 
     it('should add a new timer to pomodoro array', function() {
       Pomodoro.add(5, 'rest');
@@ -38,15 +38,7 @@ describe('Pomodoro', function() {
     });
 
     it('should maintain 8 objects within the pomodoro array', function() {
-      Pomodoro.add(5, 'rest');
-      Pomodoro.add(5, 'rest');
-      Pomodoro.add(5, 'rest');
-      Pomodoro.add(5, 'rest');
-      Pomodoro.add(5, 'rest');
-      Pomodoro.add(5, 'rest');
-      Pomodoro.add(5, 'rest');
-      Pomodoro.add(5, 'rest');
-      Pomodoro.add(5, 'rest');
+      while(Pomodoro.pomodoros.length < 9) { Pomodoro.add(5, 'rest'); }
       Pomodoro.clean();
       assert.equal(array.length, 8);
     });
