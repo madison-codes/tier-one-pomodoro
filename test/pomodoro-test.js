@@ -115,10 +115,17 @@ describe('Pomodoro', function() {
   });
 
   context('localStorage', function(){
-    it('should save the timer in local storage with the key value timer', function() {
+    it('should save the timer in local storage with the key value pomodoros', function() {
+      // debugger;
       Pomodoro.save();
-      var stored = JSON.parse(localStorage.getItem('timer'));
-      assert.equal(Pomodoro.pomodoros[0].duration.stored, timer.duration);
+      var stored = JSON.parse(localStorage.getItem('pomodoros'));
+      assert.equal(Pomodoro.pomodoros[0].duration, stored[0].duration);
+    });
+
+    it('should get the timer from local storage with the key value pomodoros', function() {
+      Pomodoro.save();
+      var stored = JSON.parse(localStorage.getItem('pomodoros'));
+      assert.equal(Pomodoro.pomodoros[0].duration, stored[0].duration);
     });
   });
 
