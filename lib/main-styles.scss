@@ -23,7 +23,7 @@
 
 #focus-time-input,
 #break-time-input {
-  border: 1px solid $gray;
+  @include skinny-border($gray);
   border-radius: 5px;
   height: 4vh;
   margin: 20px 10px 0 0;
@@ -57,11 +57,11 @@ main {
 }
 
 .timer-button {
+  @include skinny-border($dark-pink);
   align-items: center;
     // -ms-flex-align: center;
     // -webkit-box-align: center;
   background-color: $light-pink;
-  border: 1px solid $dark-pink;
   border-radius: 50%;
   display: flex;
     // display: -ms-flexbox;
@@ -75,28 +75,25 @@ main {
     // -ms-flex-pack: center;
     // -webkit-box-pack: center;
   width: 40vh;
-}
-
-.timer-button:hover {
-  // @include hover($dark-pink);
-  border: 7px solid $dark-pink;
-  opacity: .8;
+  &:hover {
+    @include hover($dark-pink);
+  }
 }
 
 .break {
+  @include skinny-border($dark-green);
   background-color: $light-green;
-  border: 1px solid $dark-green;
+  &:hover {
+    @include hover($dark-green);
+  }
 }
 
-.break:hover {
-  @include hover($dark-green);
-}
 .final-seconds {
+  @include fat-border($light-pink);
   align-items: center;
     // -ms-flex-align: center;
     // -webkit-box-align: center;
   background-color: $dark-pink;
-  border: 7px solid $light-pink;
   border-radius: 50%;
   display: flex;
     // display: -ms-flexbox;
@@ -139,8 +136,8 @@ q {
 }
 
 #date{
+  @include skinny-border(black);
   background-color: $opaque-white;
-  border: 2px solid black;
   height: 30px;
   margin-top: 50px;
   width: 30px;

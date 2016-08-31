@@ -1,3 +1,4 @@
+// COLORS
 $dark-green: #014023;
 $dark-pink: #400D29;
 $gray: #3D3D3D;
@@ -6,13 +7,27 @@ $light-pink: #A6215F;
 $opaque-white: rgba(255, 255, 255, .8);
 $white: #FFF;
 
+// FONTS
 $font-main: 'Alegreya Sans', sans-serif;
 $number-font:'Rozha One', serif;
 
+// IMAGES
 $background-img: url(/lib/img/garden.png) no-repeat;
 $menu-icon: url(/lib/img/menu-setting.svg) no-repeat;
 
-@mixin hover($color) {
+// STYLES
+// $skinny-border: 1px solid $color;
+
+// MIXINS
+@mixin skinny-border($color) {
+  border: 1px solid $color;
+}
+
+@mixin fat-border($color) {
   border: 7px solid $color;
+}
+
+@mixin hover($color) {
+  @include fat-border($color);
   opacity: .8;
 }
