@@ -1,4 +1,5 @@
 @import 'variables';
+@import 'mixins';
 
 #setting-menu {
   background-color: $white;
@@ -10,14 +11,12 @@
     // -ms-flex-pack: justify;
     // -webkit-box-pack: justify;
   opacity: .8;
-  width: 100%;
   z-index: 4;
 }
 
 .settings-link{
   background: $menu-icon;
-  margin-left: 10px;
-  margin-top: 20px;
+  margin: 20px 0 0 10px;
   padding: 40px;
 }
 
@@ -140,6 +139,7 @@ q {
   background-color: $opaque-white;
   height: 30px;
   margin-top: 50px;
+  padding-bottom: 3px;
   width: 30px;
 
 }
@@ -147,33 +147,24 @@ q {
   align-items: center;
     // -ms-flex-align: center;
     // -webkit-box-align: center;
-  color: black;
   display: flex;
     // display: -ms-flexbox;
     // display: -webkit-box;
-  flex-wrap: wrap;
-    // -ms-flex-wrap: wrap;
   font-family: $font-main;
   font-size: .8rem;
+  font-weight: bold;
   justify-content: center;
     // -ms-flex-pack: center;
     // -webkit-box-pack: center;
   margin: 0;
-  padding: 0;
 }
 
 footer {
   align-content: center;
     // -ms-flex-line-pack: center;
   background-color: $light-pink;
-  bottom: 0;
-  color: white;
-  display: flex;
-    // display: -ms-flexbox;
-    // display: -webkit-box;
   font-family: $font-main;
   height: 5vh;
-  width: 100%;
 }
 
 @media screen and (min-width: 550px){
@@ -184,18 +175,15 @@ footer {
   }
 
   .settings-link{
-    margin-left: 30px;
-    margin-top: 30px;
+    margin: 30px 0 0 30px;
     padding: 40px;
   }
 
   #focus-time-input,
   #break-time-input {
-    border: .2rem solid $gray;
     font-size: 1.3rem;
     height: 4vh;
-    margin-right: 10px;
-    margin-top: 30px;
+    margin: 30px 10px 0 0;
     width: 30%;
   }
 
@@ -218,7 +206,6 @@ footer {
 
   #month, #day {
     font-size: 1.3rem;
-    font-weight: bold;
   }
 
   #month {

@@ -14,20 +14,3 @@ $number-font:'Rozha One', serif;
 // IMAGES
 $background-img: url(/lib/img/garden.png) no-repeat;
 $menu-icon: url(/lib/img/menu-setting.svg) no-repeat;
-
-// STYLES
-// $skinny-border: 1px solid $color;
-
-// MIXINS
-@mixin skinny-border($color) {
-  border: 1px solid $color;
-}
-
-@mixin fat-border($color) {
-  border: 7px solid $color;
-}
-
-@mixin hover($color) {
-  @include fat-border($color);
-  opacity: .8;
-}
