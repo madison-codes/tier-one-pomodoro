@@ -11,13 +11,13 @@ $background-img: url(/lib/img/garden.png) no-repeat;
 $menu-icon: url(/lib/img/menu-setting.svg) no-repeat;
 
 #setting-menu {
-  // display: inline-block;
   background-color: $white;
+  display: flex;
   height: 12vh;
+  justify-content: space-between;
+  opacity: .8;
   width: 100%;
   z-index: 4;
-  display: flex;
-  justify-content: space-between;
 }
 
 .settings-link{
@@ -29,7 +29,6 @@ $menu-icon: url(/lib/img/menu-setting.svg) no-repeat;
 
 #focus-time-input,
 #break-time-input {
-  background-color: $white;
   border: 1px solid $gray;
   border-radius: 5px;
   height: 4vh;
@@ -67,13 +66,18 @@ main {
   width: 40vh;
 }
 
+.timer-button:hover {
+  border: 7px solid $dark-pink;
+  opacity: .8;
+}
+
 .break {
   background-color: $light-green;
   border: 1px solid $dark-green;
 }
 
-.timer-button:hover {
-  border: 7px solid $dark-pink;
+.break:hover {
+  border: 7px solid $dark-green;
   opacity: .8;
 }
 
@@ -91,7 +95,7 @@ main {
 
 .display-count-down {
   font-family: $number-font;
-  font-size: 7rem;
+  font-size: 5rem;
   margin: 0px;
   padding: 0px;
 }
@@ -99,7 +103,7 @@ main {
 .display-action{
   color: $white;
   font-family: $font-main;
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin: 0px;
   margin-top: -25px;
   opacity: .9;
@@ -146,17 +150,52 @@ footer {
   width: 100%;
 }
 
-@media screen and (max-width: 550px){
+@media screen and (min-width: 550px){
 
-  q {
-    padding-top: 20%;
+  #setting-menu {
+    justify-content: space-around;
+  }
+
+  .settings-link{
+    margin-left: 30px;
+    margin-top: 30px;
+    padding: 40px;
+  }
+
+  #focus-time-input,
+  #break-time-input {
+    border: .2rem solid $gray;
+    font-size: 1.3rem;
+    height: 4vh;
+    margin-right: 10px;
+    margin-top: 30px;
+    width: 30%;
   }
 
   .display-action {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 
   .display-count-down {
-    font-size: 5rem;
+    font-size: 7rem;
+  }
+
+  q {
+    font-size: 2.5rem;
+  }
+
+  #date {
+    height: 60px;
+    // margin-top: 50px;
+    width: 60px;
+  }
+
+  #month, #day {
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+
+  #month {
+    padding-top: 5px;
   }
 }
