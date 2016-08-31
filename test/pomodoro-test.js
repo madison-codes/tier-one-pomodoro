@@ -3,15 +3,6 @@ const Pomodoro = require('../lib/pomodoro');
 const Timer = require('../lib/timer');
 
 describe('Pomodoro', function() {
-  var array = Pomodoro.pomodoroArray;
-
-  beforeEach(function() {
-    Pomodoro.pomodoroArray = [new Timer()];
-  });
-
-  afterEach(function() {
-    Pomodoro.pomodoroArray = [];
-  });
 
   context('instantiate Pomodoro Object and Array', function(){
 
@@ -116,7 +107,6 @@ describe('Pomodoro', function() {
 
   context('localStorage', function(){
     it('should save the timer in local storage with the key value pomodoros', function() {
-      // debugger;
       Pomodoro.save();
       var stored = JSON.parse(localStorage.getItem('pomodoros'));
       assert.equal(Pomodoro.pomodoros[0].duration, stored[0].duration);
