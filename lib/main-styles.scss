@@ -13,18 +13,23 @@ $menu-icon: url(/lib/img/menu-setting.svg) no-repeat;
 #setting-menu {
   background-color: $white;
   display: flex;
-  height: 12vh;
-  justify-content: space-between;
+  height: 15vh;
+  justify-content: center;
+  align-items: center;
   opacity: .8;
   width: 100%;
   z-index: 4;
+  position: fixed;
+  top: 0;
 }
 
 .settings-link{
   background: $menu-icon;
   margin-left: 10px;
   margin-top: 20px;
-  padding: 40px;
+  padding: 60px;
+  border: none;
+  background-color: transparent;
 }
 
 #focus-time-input,
@@ -139,6 +144,10 @@ q {
   padding: 0;
 }
 
+#setting-menu {
+  display: none;
+}
+
 footer {
   align-content: center;
   background-color: $light-pink;
@@ -186,7 +195,6 @@ footer {
 
   #date {
     height: 60px;
-    // margin-top: 50px;
     width: 60px;
   }
 
