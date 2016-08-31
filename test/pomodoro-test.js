@@ -13,102 +13,66 @@ describe('Pomodoro', function() {
     Pomodoro.pomodoroArray = [];
   });
 
-  context('instantiate timer within TimerRoom array', function(){
+  context('instantiate Pomodoro Object and Array', function(){
 
     it('should be an object', function() {
       assert.isObject(Pomodoro);
     });
 
-    it('should have an array called pomodoroArray', function() {
-      assert.isArray(Pomodoro.pomodoroArray);
+    it('should have an array called pomodoros', function() {
+      assert.isArray(Pomodoro.pomodoros);
     });
+  });
 
-    it('should have a variable that sets array length to 2', function() {
+  context('Pomodoro methods', function(){
+
+    it('should have a variable that sets array length', function() {
       var pomodoroLength = 2;
       assert.equal(pomodoroLength, 2);
     });
-  });
 
-  context('pomoduroArray', function(){
-      // array.push(new Timer(25, 'work'));
-
-    it('should add a new timer to pomodoro array', function() {
-      Pomodoro.add(5, 'rest');
-      assert.equal(array.length, 2);
-    });
-
-    it('should maintain 8 objects within the pomodoro array', function() {
-      while(Pomodoro.pomodoros.length < 9) { Pomodoro.add(5, 'rest'); }
+    it('should maintain pomodoro array length', function() {
+      Pomodoro.pomodoros.unshift(new Timer(5, 'work'));
+      Pomodoro.pomodoros.unshift(new Timer(5, 'work'));
+      Pomodoro.pomodoros.unshift(new Timer(5, 'work'));
+      Pomodoro.pomodoros.unshift(new Timer(5, 'work'));
+      Pomodoro.pomodoros.unshift(new Timer(5, 'work'));
+      Pomodoro.pomodoros.unshift(new Timer(5, 'work'));
+      Pomodoro.pomodoros.unshift(new Timer(5, 'work'));
+      Pomodoro.pomodoros.unshift(new Timer(5, 'work'));
+      Pomodoro.pomodoros.unshift(new Timer(5, 'work'));
       Pomodoro.clean();
-      assert.equal(array.length, 8);
+      assert.equal(Pomodoro.pomodoros.length, 8);
     });
-  });
-
-  context('long rest object', function(){
 
     it('should return false if workcount is not 4', function(){
-      Pomodoro.createDefaultWorkTimer();
+      Pomodoro.createFocusTimer();
       assert.isFalse(Pomodoro.longBreak());
     });
 
     it('return true if workcount is 4', function(){
-      Pomodoro.createDefaultWorkTimer();
-      Pomodoro.createDefaultWorkTimer();
-      Pomodoro.createDefaultWorkTimer();
+      Pomodoro.createFocusTimer();
+      Pomodoro.createFocusTimer();
       assert.isTrue(Pomodoro.longBreak());
-    });
-  });
-
-  context('default work object', function(){
-
-    it('should create a new default work object', function(){
-      assert.equal(array.length, 1);
-    });
-
-    it('should have a duration of 25 min', function(){
-      Pomodoro.createDefaultWorkTimer();
-      assert.equal(array[1].duration, 1500000);
-    });
-
-    it('should have a session of work', function(){
-      Pomodoro.createDefaultWorkTimer();
-      assert.equal(array[1].session, 'work');
-    });
-  });
-
-  context('default rest object', function(){
-
-    it('should create a new default work object', function(){
-      assert.equal(array.length, 1);
-    });
-
-    it('should have a duration of 5 min', function(){
-      Pomodoro.createDefaultRestTimer();
-      assert.equal(array[1].duration, 300000);
-    });
-
-    it('should have a session of rest', function(){
-      Pomodoro.createDefaultRestTimer();
-      assert.equal(array[1].session, 'rest');
     });
   });
 
   context('custom work object', function(){
 
-    var duration = 20;
+    var duration = 25;
 
     it('should create a new default work object', function(){
-      assert.equal(array.length, 1);
+      assert.equal(Pomodoro.pomodoros.length, 11);
     });
 
     it('should have a duration of 25 min', function(){
-      Pomodoro.createCustomWorkTimer(duration);
-      assert.equal(array[1].duration, 20);
+      Pomodoro.createBreakTimer(duration);
+      assert.equal(Pomodoro.pomodoros[0].duration, 25 * 60000);
     });
 
-    it('should have a session of work', function(){
-      Pomodoro.createDefaultWorkTimer(duration);
-      assert.equal(array[1].session, 'work');
+    it('should have a session of rest', function(){
+      Pomodoro.createBreakTimer(duration);
+      assert.equal(Pomodoro.pomodoros[0].session, 'rest');
     });
   });
 
@@ -117,37 +81,45 @@ describe('Pomodoro', function() {
     var duration = 20;
 
     it('should create a new default work object', function(){
-      assert.equal(array.length, 1);
+      assert.equal(Pomodoro.pomodoros.length, 13);
     });
 
     it('should have a duration of 25 min', function(){
-      Pomodoro.createCustomWorkTimer(duration);
-      assert.equal(array[1].duration, 20);
+      Pomodoro.createFocusTimer(duration);
+      assert.equal(Pomodoro.pomodoros[0].duration, 20 * 60000);
     });
 
     it('should have a session of work', function(){
-      Pomodoro.createDefaultWorkTimer(duration);
-      assert.equal(array[1].session, 'work');
+      Pomodoro.createFocusTimer(duration);
+      assert.equal(Pomodoro.pomodoros[0].session, 'work');
     });
   });
 
   context('long rest object', function(){
-
     var duration = 2;
 
     it('should create a new default work object', function(){
-      Pomodoro.createLongRestTimer(duration);
-      assert.equal(array.length, 2);
+      Pomodoro.createLongBreakTimer(duration);
+      assert.equal(Pomodoro.pomodoros.length, 16);
     });
 
     it('should have a duration of 25 min', function(){
-      Pomodoro.createLongRestTimer(duration);
-      assert.equal(array[1].duration, 6);
+      Pomodoro.createLongBreakTimer(duration);
+      assert.equal(Pomodoro.pomodoros[0].duration, 6 * 60000);
     });
 
     it('should have a session of work', function(){
-      Pomodoro.createLongRestTimer(duration);
-      assert.equal(array[1].session, 'rest');
+      Pomodoro.createLongBreakTimer(duration);
+      assert.equal(Pomodoro.pomodoros[0].session, 'rest');
     });
   });
+
+  context('localStorage', function(){
+    it('should save the timer in local storage with the key value timer', function() {
+      Pomodoro.save();
+      var stored = JSON.parse(localStorage.getItem('timer'));
+      assert.equal(Pomodoro.pomodoros[0].duration.stored, timer.duration);
+    });
+  });
+
 });
