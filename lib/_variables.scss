@@ -1,0 +1,18 @@
+$dark-green: #014023;
+$dark-pink: #400D29;
+$gray: #3D3D3D;
+$light-green: #02733E;
+$light-pink: #A6215F;
+$opaque-white: rgba(255, 255, 255, .8);
+$white: #FFF;
+
+$font-main: 'Alegreya Sans', sans-serif;
+$number-font:'Rozha One', serif;
+
+$background-img: url(/lib/img/garden.png) no-repeat;
+$menu-icon: url(/lib/img/menu-setting.svg) no-repeat;
+
+@mixin hover($color) {
+  border: 7px solid $color;
+  opacity: .8;
+}

@@ -1,10 +1,14 @@
-@import 'globals';
+@import 'variables';
 
 #setting-menu {
   background-color: $white;
   display: flex;
+    // display: -ms-flexbox;
+    // display: -webkit-box;
   height: 12vh;
   justify-content: space-between;
+    // -ms-flex-pack: justify;
+    // -webkit-box-pack: justify;
   opacity: .8;
   width: 100%;
   z-index: 4;
@@ -22,8 +26,7 @@
   border: 1px solid $gray;
   border-radius: 5px;
   height: 4vh;
-  margin-right: 10px;
-  margin-top: 20px;
+  margin: 20px 10px 0 0;
   text-align: center;
   width: 30%;
 }
@@ -38,25 +41,44 @@ body {
 
 main {
   align-items: center;
+    // -ms-flex-align: center;
+    // -webkit-box-align: center;
   display: flex;
+    // display: -ms-flexbox;
+    // display: -webkit-box;
   flex-direction: column;
+    // -ms-flex-direction: column;
+    // -webkit-box-direction: normal;
+    // -webkit-box-orient: vertical;
   height: 85vh;
   justify-content: center;
+    // -ms-flex-pack: center;
+    // -webkit-box-pack: center;
 }
 
 .timer-button {
   align-items: center;
+    // -ms-flex-align: center;
+    // -webkit-box-align: center;
   background-color: $light-pink;
   border: 1px solid $dark-pink;
   border-radius: 50%;
   display: flex;
+    // display: -ms-flexbox;
+    // display: -webkit-box;
   flex-direction: column;
+    // -ms-flex-direction: column;
+    // -webkit-box-direction: normal;
+    // -webkit-box-orient: vertical;
   height: 40vh;
   justify-content: center;
+    // -ms-flex-pack: center;
+    // -webkit-box-pack: center;
   width: 40vh;
 }
 
 .timer-button:hover {
+  // @include hover($dark-pink);
   border: 7px solid $dark-pink;
   opacity: .8;
 }
@@ -67,19 +89,26 @@ main {
 }
 
 .break:hover {
-  border: 7px solid $dark-green;
-  opacity: .8;
+  @include hover($dark-green);
 }
-
 .final-seconds {
   align-items: center;
+    // -ms-flex-align: center;
+    // -webkit-box-align: center;
   background-color: $dark-pink;
   border: 7px solid $light-pink;
   border-radius: 50%;
   display: flex;
+    // display: -ms-flexbox;
+    // display: -webkit-box;
   flex-direction: column;
+    // -ms-flex-direction: column;
+    // -webkit-box-direction: normal;
+    // -webkit-box-orient: vertical;
   height: 40vh;
   justify-content: center;
+    // -ms-flex-pack: center;
+    // -webkit-box-pack: center;
   width: 40vh;
 }
 
@@ -110,7 +139,7 @@ q {
 }
 
 #date{
-  background-color: rgba(255, 255, 255, .8);
+  background-color: $opaque-white;
   border: 2px solid black;
   height: 30px;
   margin-top: 50px;
@@ -119,22 +148,32 @@ q {
 }
 #month, #day{
   align-items: center;
+    // -ms-flex-align: center;
+    // -webkit-box-align: center;
   color: black;
   display: flex;
+    // display: -ms-flexbox;
+    // display: -webkit-box;
   flex-wrap: wrap;
+    // -ms-flex-wrap: wrap;
   font-family: $font-main;
   font-size: .8rem;
   justify-content: center;
+    // -ms-flex-pack: center;
+    // -webkit-box-pack: center;
   margin: 0;
   padding: 0;
 }
 
 footer {
   align-content: center;
+    // -ms-flex-line-pack: center;
   background-color: $light-pink;
   bottom: 0;
   color: white;
   display: flex;
+    // display: -ms-flexbox;
+    // display: -webkit-box;
   font-family: $font-main;
   height: 5vh;
   width: 100%;
@@ -144,6 +183,7 @@ footer {
 
   #setting-menu {
     justify-content: space-around;
+      // -ms-flex-pack: distribute;
   }
 
   .settings-link{
@@ -176,7 +216,6 @@ footer {
 
   #date {
     height: 60px;
-    // margin-top: 50px;
     width: 60px;
   }
 
