@@ -3,18 +3,40 @@ $dark-pink: #400D29;
 $light-green: #02733E;
 $dark-green: #014023;
 $white: white;
+$gray: #3D3D3D;
 
 $number-font:'Rozha One', serif;
 $font-main: 'Alegreya Sans', sans-serif;
 $background-img: url(/lib/img/garden.png) no-repeat;
 $menu-icon: url(/lib/img/menu-setting.svg) no-repeat;
 
+#setting-menu {
+  // display: inline-block;
+  background-color: $white;
+  height: 12vh;
+  width: 100%;
+  z-index: 4;
+  display: flex;
+  justify-content: space-between;
+}
+
 .settings-link{
   background: $menu-icon;
-  background-position: bottom;
+  margin-left: 10px;
   margin-top: 20px;
   padding: 40px;
-  padding-left: 40px;
+}
+
+#focus-time-input,
+#break-time-input {
+  background-color: $white;
+  border: 1px solid $gray;
+  border-radius: 5px;
+  height: 4vh;
+  margin-right: 10px;
+  margin-top: 20px;
+  text-align: center;
+  width: 30%;
 }
 
 body {
@@ -29,35 +51,8 @@ main {
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: 94vh;
+  height: 85vh;
   justify-content: center;
-}
-
-header {
-  background-color: $white;
-  height: 10vh;
-  width: 100%;
-}
-
-#setting-menu {
-  display: inline-block;
-}
-
-#focus-time-input,
-#break-time-input {
-  background-color: $white;
-  border: 1px solid $light-green;
-  border-radius: 5px;
-  width: 30%;
-}
-
-#set-focus-submit,
-#set-break-submit {
-  background-color: $light-pink;
-  border: 1px solid $dark-pink;
-  border-radius: 5px;
-  color: $white;
-  height: 15%;
 }
 
 .timer-button {
@@ -70,6 +65,11 @@ header {
   height: 40vh;
   justify-content: center;
   width: 40vh;
+}
+
+.break {
+  background-color: $light-green;
+  border: 1px solid $dark-green;
 }
 
 .timer-button:hover {
@@ -91,7 +91,7 @@ header {
 
 .display-count-down {
   font-family: $number-font;
-  font-size: 6rem;
+  font-size: 7rem;
   margin: 0px;
   padding: 0px;
 }
@@ -99,7 +99,7 @@ header {
 .display-action{
   color: $white;
   font-family: $font-main;
-  font-size: 1.5rem;
+  font-size: 2rem;
   margin: 0px;
   margin-top: -25px;
   opacity: .9;
@@ -147,7 +147,16 @@ footer {
 }
 
 @media screen and (max-width: 550px){
+
   q {
     padding-top: 20%;
+  }
+
+  .display-action {
+    font-size: 1.5rem;
+  }
+
+  .display-count-down {
+    font-size: 5rem;
   }
 }
