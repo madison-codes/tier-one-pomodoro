@@ -13,51 +13,83 @@ describe('Timer', function() {
       Date.now = this.dateNow;
     });
 
-  context('instantiate timer', function(){
-    // does this object need a value??
+  context('timer constructor', function(){
 
-    var timer = new Timer({duration: 20});
+    var timer = new Timer(20);
 
     it('should be a function', function() {
       assert.isFunction(Timer);
     });
 
-    it('should return null if there is not a given start time', function() {
-      var returned = timer.end();
-      assert.isNull(returned);
+    it('should return null if .start is not called', function() {
+      assert.isNull(timer.startTime);
     });
 
-    it('should have a start time equal to date.now', function() {
-      var start = timer.start();
-      var expected = Date.now();
-      assert.equal(start, expected);
+    it('should return null if .start is not called', function() {
+      assert.isNull(timer.timeRemaining);
     });
 
-    it('should return the end time if given a start time', function(){
-      timer.start();
-      var end = timer.end();
-      var expected = Date.now() + timer.duration;
-      assert.equal(end, expected);
+    it('should return null if changeStatetoPaused is not called', function() {
+      assert.isNull(timer.state);
+    });
+
+    it('should return null if changeSecondsToTime is not called', function() {
+      assert.isNull(timer.state);
     });
   });
-  context('methods of timer', function(){
-    var timer = new Timer(20);
 
-    it('should return false if the timer start function has not been started', function(){
-      var outcome = timer.hasStarted();
-      assert.isFalse(outcome);
+  context('timer methods', function(){
+    var timer = new Timer();
+
+    it('should return false if the timer has a startTime value', function(){
+      assert.isFalse(timer.hasStarted());
     });
 
-    it('should return the start time if the start function has been called', function(){
+    it('should return true if the timer has a startTime value', function(){
       timer.start();
-      var outcome = timer.hasStarted();
-      assert.isTrue(outcome);
+      assert.isTrue(timer.hasStarted());
+    });
+
+    it('should return .startTime if .start is called', function() {
+      let time = Date.now();
+      timer.start(time);
+      assert.equal(timer.startTime, timer.start(time));
+    });
+
+    it('should have return a value equal to the the timer start time and timer duration', function() {
+      timer.startTime = Date.now();
+      timer.duration = 2;
+      let expected = timer.startTime + timer.duration;
+      assert.equal(timer.end(), expected);
+    });
+
+    it('should set timer.state property equal to the string paused', function(){
+      timer.changeStateToPaused();
+      assert.equal(timer.state, 'paused');
+    });
+
+    it('should set timer.state property equal to the string running', function(){
+      timer.changeStateToRunning();
+      assert.equal(timer.state, 'running');
+    });
+
+    it('should take in seconds and return the correct value in html elements', function(){
+      let seconds = 65;
+      let functionValue = timer.changeSecondsToTime(seconds);
+      let expected = `${1}:0${5}`;
+      assert.equal(functionValue, expected);
+    });
+
+    it('should take in seconds and return the correct value in html elements', function(){
+      let seconds = 70;
+      let functionValue = timer.changeSecondsToTime(seconds);
+      let expected = `${1}:${10}`;
+      assert.equal(functionValue, expected);
     });
 
     it('should return the remaining time, difference between the current time and the set end time', function() {
-      var remaining = timer.remaining();
-      var expected = timer.end() - Date.now();
-      assert.equal(remaining, expected);
+      timer.resumeRemaining();
+      assert.equal(this.timeRemaining, timer.duration);
     });
 
     it('should return the elapsed time, difference between the current time and the start time', function() {
@@ -65,19 +97,15 @@ describe('Timer', function() {
       var expected = Date.now() - timer.start();
       assert.equal(remaining, expected);
     });
-  });
-
-  context('time expired', function() {
-    var timer = new Timer(20);
 
     it('should return true if the time remaining is less than 0', function() {
       timer.remaining = () => -1;
-      assert.isTrue(timer.expired());
+      assert.isTrue(timer.isExpired());
     });
 
     it('should return false if the time remaining is greater than 0', function() {
       timer.remaining = () => 1;
-      assert.isFalse(timer.expired());
+      assert.isFalse(timer.isExpired());
     });
   });
 });
