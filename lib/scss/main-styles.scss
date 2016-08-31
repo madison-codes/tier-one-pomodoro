@@ -1,46 +1,38 @@
-$light-pink: #A6215F;
-$dark-pink: #400D29;
-$light-green: #02733E;
-$dark-green: #014023;
-$white: white;
-$gray: #3D3D3D;
-
-$number-font:'Rozha One', serif;
-$font-main: 'Alegreya Sans', sans-serif;
-$background-img: url(/lib/img/garden.png) no-repeat;
-$menu-icon: url(/lib/img/menu-setting.svg) no-repeat;
+@import 'variables';
+@import 'mixins';
 
 #setting-menu {
   background-color: $white;
   display: flex;
+    // display: -ms-flexbox;
+    // display: -webkit-box;
   height: 12vh;
   justify-content: space-between;
+    // -ms-flex-pack: justify;
+    // -webkit-box-pack: justify;
   opacity: .8;
-  width: 100%;
   z-index: 4;
 }
 
 .settings-link{
   background: $menu-icon;
-  margin-left: 10px;
-  margin-top: 20px;
+  margin: 20px 0 0 10px;
   padding: 40px;
 }
 
 #focus-time-input,
 #break-time-input {
-  border: 1px solid $gray;
+  @include skinny-border($gray);
   border-radius: 5px;
   height: 4vh;
-  margin-right: 10px;
-  margin-top: 20px;
+  margin: 20px 10px 0 0;
   text-align: center;
   width: 30%;
 }
 
 body {
   background: $background-img;
-  background-color: white transparent;
+  background-color: $white transparent;
   background-position: top;
   margin: 0;
   padding: 0;
@@ -48,48 +40,71 @@ body {
 
 main {
   align-items: center;
+    // -ms-flex-align: center;
+    // -webkit-box-align: center;
   display: flex;
+    // display: -ms-flexbox;
+    // display: -webkit-box;
   flex-direction: column;
+    // -ms-flex-direction: column;
+    // -webkit-box-direction: normal;
+    // -webkit-box-orient: vertical;
   height: 85vh;
   justify-content: center;
+    // -ms-flex-pack: center;
+    // -webkit-box-pack: center;
 }
 
 .timer-button {
+  @include skinny-border($dark-pink);
   align-items: center;
+    // -ms-flex-align: center;
+    // -webkit-box-align: center;
   background-color: $light-pink;
-  border: 1px solid $dark-pink;
   border-radius: 50%;
   display: flex;
+    // display: -ms-flexbox;
+    // display: -webkit-box;
   flex-direction: column;
+    // -ms-flex-direction: column;
+    // -webkit-box-direction: normal;
+    // -webkit-box-orient: vertical;
   height: 40vh;
   justify-content: center;
+    // -ms-flex-pack: center;
+    // -webkit-box-pack: center;
   width: 40vh;
-}
-
-.timer-button:hover {
-  border: 7px solid $dark-pink;
-  opacity: .8;
+  &:hover {
+    @include hover($dark-pink);
+  }
 }
 
 .break {
+  @include skinny-border($dark-green);
   background-color: $light-green;
-  border: 1px solid $dark-green;
-}
-
-.break:hover {
-  border: 7px solid $dark-green;
-  opacity: .8;
+  &:hover {
+    @include hover($dark-green);
+  }
 }
 
 .final-seconds {
+  @include fat-border($light-pink);
   align-items: center;
+    // -ms-flex-align: center;
+    // -webkit-box-align: center;
   background-color: $dark-pink;
-  border: 7px solid $light-pink;
   border-radius: 50%;
   display: flex;
+    // display: -ms-flexbox;
+    // display: -webkit-box;
   flex-direction: column;
+    // -ms-flex-direction: column;
+    // -webkit-box-direction: normal;
+    // -webkit-box-orient: vertical;
   height: 40vh;
   justify-content: center;
+    // -ms-flex-pack: center;
+    // -webkit-box-pack: center;
   width: 40vh;
 }
 
@@ -120,55 +135,55 @@ q {
 }
 
 #date{
-  background-color: rgba(255, 255, 255, .8);
-  border: 2px solid black;
+  @include skinny-border(black);
+  background-color: $opaque-white;
   height: 30px;
   margin-top: 50px;
+  padding-bottom: 3px;
   width: 30px;
 
 }
 #month, #day{
   align-items: center;
-  color: black;
+    // -ms-flex-align: center;
+    // -webkit-box-align: center;
   display: flex;
-  flex-wrap: wrap;
+    // display: -ms-flexbox;
+    // display: -webkit-box;
   font-family: $font-main;
   font-size: .8rem;
+  font-weight: bold;
   justify-content: center;
+    // -ms-flex-pack: center;
+    // -webkit-box-pack: center;
   margin: 0;
-  padding: 0;
 }
 
 footer {
   align-content: center;
+    // -ms-flex-line-pack: center;
   background-color: $light-pink;
-  bottom: 0;
-  color: white;
-  display: flex;
   font-family: $font-main;
   height: 5vh;
-  width: 100%;
 }
 
 @media screen and (min-width: 550px){
 
   #setting-menu {
     justify-content: space-around;
+      // -ms-flex-pack: distribute;
   }
 
   .settings-link{
-    margin-left: 30px;
-    margin-top: 30px;
+    margin: 30px 0 0 30px;
     padding: 40px;
   }
 
   #focus-time-input,
   #break-time-input {
-    border: .2rem solid $gray;
     font-size: 1.3rem;
     height: 4vh;
-    margin-right: 10px;
-    margin-top: 30px;
+    margin: 30px 10px 0 0;
     width: 30%;
   }
 
@@ -186,13 +201,11 @@ footer {
 
   #date {
     height: 60px;
-    // margin-top: 50px;
     width: 60px;
   }
 
   #month, #day {
     font-size: 1.3rem;
-    font-weight: bold;
   }
 
   #month {
