@@ -56,12 +56,6 @@ describe('Timer', function() {
       assert.equal(timer.startTime, timer.start(time));
     });
 
-    it.skip('should change .timeRemaining property of the timer', function() {
-      // let time = Date.now();
-      let expected = (timer.end() - timer.remaining());
-      assert.equal(timer.remaining(), expected);
-    });
-
     it('should have return a value equal to the the timer start time and timer duration', function() {
       timer.startTime = Date.now();
       timer.duration = 2;
