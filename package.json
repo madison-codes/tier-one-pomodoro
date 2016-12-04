@@ -1,5 +1,5 @@
 {
-  "name": "tier-one-pomodoro",
+  "name": "pomodoro-app",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/madison-kerndt/tier-one-pomodoro.git"
+    "url": "git+https://github.com/kccrs/pomodoro-app"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/madison-kerndt/tier-one-pomodoro/issues"
+    "url": "https://github.com/kccrs/pomodoro-app/issues"
   },
-  "homepage": "https://github.com/madison-kerndt/tier-one-pomodoro#readme",
+  "homepage": "https://github.com/kccrs/pomodoro-app#readme",
   "devDependencies": {
     "babel-loader": "^6.2.5",
     "chai": "^3.5.0",

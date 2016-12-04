@@ -4,12 +4,8 @@
 #setting-menu {
   background-color: $white;
   display: flex;
-    // display: -ms-flexbox;
-    // display: -webkit-box;
   height: 12vh;
   justify-content: space-between;
-    // -ms-flex-pack: justify;
-    // -webkit-box-pack: justify;
   opacity: .8;
   z-index: 4;
 }
@@ -34,39 +30,21 @@ body {
 
 main {
   align-items: center;
-    // -ms-flex-align: center;
-    // -webkit-box-align: center;
   display: flex;
-    // display: -ms-flexbox;
-    // display: -webkit-box;
   flex-direction: column;
-    // -ms-flex-direction: column;
-    // -webkit-box-direction: normal;
-    // -webkit-box-orient: vertical;
   height: 85vh;
   justify-content: center;
-    // -ms-flex-pack: center;
-    // -webkit-box-pack: center;
 }
 
 .timer-button {
   @include skinny-border($dark-pink);
   align-items: center;
-    // -ms-flex-align: center;
-    // -webkit-box-align: center;
   background-color: $light-pink;
   border-radius: 50%;
   display: flex;
-    // display: -ms-flexbox;
-    // display: -webkit-box;
   flex-direction: column;
-    // -ms-flex-direction: column;
-    // -webkit-box-direction: normal;
-    // -webkit-box-orient: vertical;
   height: 40vh;
   justify-content: center;
-    // -ms-flex-pack: center;
-    // -webkit-box-pack: center;
   width: 40vh;
   &:hover {
     @include hover($dark-pink);
@@ -84,21 +62,12 @@ main {
 .final-seconds {
   @include fat-border($light-pink);
   align-items: center;
-    // -ms-flex-align: center;
-    // -webkit-box-align: center;
   background-color: $dark-pink;
   border-radius: 50%;
   display: flex;
-    // display: -ms-flexbox;
-    // display: -webkit-box;
   flex-direction: column;
-    // -ms-flex-direction: column;
-    // -webkit-box-direction: normal;
-    // -webkit-box-orient: vertical;
   height: 40vh;
   justify-content: center;
-    // -ms-flex-pack: center;
-    // -webkit-box-pack: center;
   width: 40vh;
 }
 
@@ -139,23 +108,16 @@ q {
 }
 #month, #day{
   align-items: center;
-    // -ms-flex-align: center;
-    // -webkit-box-align: center;
   display: flex;
-    // display: -ms-flexbox;
-    // display: -webkit-box;
   font-family: $font-main;
   font-size: .8rem;
   font-weight: bold;
   justify-content: center;
-    // -ms-flex-pack: center;
-    // -webkit-box-pack: center;
   margin: 0;
 }
 
 footer {
   align-content: center;
-    // -ms-flex-line-pack: center;
   background-color: $light-pink;
   font-family: $font-main;
   height: 5vh;
@@ -165,7 +127,6 @@ footer {
 
   #setting-menu {
     justify-content: space-around;
-      // -ms-flex-pack: distribute;
   }
 
   .settings-link{
