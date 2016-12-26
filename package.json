@@ -25,7 +25,7 @@
     "chai": "^3.5.0",
     "css-loader": "^0.23.1",
     "mocha": "^3.2.0",
-    "mocha-loader": "^0.7.1",
+    "mocha-loader": "^1.0.0",
     "moment": "^2.14.1",
     "sass-loader": "^4.0.0",
     "style-loader": "^0.13.1",
