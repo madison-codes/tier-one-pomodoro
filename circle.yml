@@ -11,10 +11,10 @@ deployment:
   staging:
     branch: staging
     heroku:
-      appname: jetfuel-staging
+      appname: pomodoro-staging
 
 deployment:
   production:
     branch: master
     heroku:
-      appname: jetfuel-production
+      appname: pomodoro-app-production
