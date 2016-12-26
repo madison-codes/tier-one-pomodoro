@@ -56,7 +56,7 @@
 
 	'use strict';
 
-	function Timer(duration, session) {
+	function Timer (duration, session) {
 	  this.duration = duration * 60000;
 	  this.startTime = null;
 	  this.timeRemaining = null;
@@ -64,34 +64,34 @@
 	  this.state = null;
 	}
 
-	Timer.prototype.hasStarted = function() {
+	Timer.prototype.hasStarted = function () {
 	  return !!this.startTime;
 	};
 
-	Timer.prototype.start = function(time = Date.now()) {
+	Timer.prototype.start = function (time = Date.now()) {
 	  this.startTime = time;
 	  return this.startTime;
 	};
 
-	Timer.prototype.remaining = function() {
+	Timer.prototype.remaining = function () {
 	  this.timeRemaining = this.end() - Date.now();
 	  return this.timeRemaining;
 	};
 
-	Timer.prototype.end = function() {
+	Timer.prototype.end = function () {
 	  if(!this.startTime) { return null; }
 	  return this.startTime + this.duration;
 	};
 
-	Timer.prototype.changeStateToPaused = function() {
+	Timer.prototype.changeStateToPaused = function () {
 	    this.state = 'paused';
 	};
 
-	Timer.prototype.changeStateToRunning = function() {
+	Timer.prototype.changeStateToRunning = function () {
 	    this.state = 'running';
 	};
 
-	Timer.prototype.changeSecondsToTime = function(seconds) {
+	Timer.prototype.changeSecondsToTime = function (seconds) {
 	  var leftOverSeconds = Math.floor(seconds % 60);
 	  var minutes = Math.floor(seconds / 60);
 	  if (leftOverSeconds < 10) {
@@ -101,15 +101,15 @@
 	  }
 	};
 
-	Timer.prototype.resumeRemaining = function() {
+	Timer.prototype.resumeRemaining = function () {
 	  this.duration = this.timeRemaining;
 	};
 
-	Timer.prototype.elapsed = function() {
+	Timer.prototype.elapsed = function () {
 	  return Date.now() - this.start();
 	};
 
-	Timer.prototype.isExpired = function() {
+	Timer.prototype.isExpired = function () {
 	  if (this.remaining() <= 0) {
 	    return true;
 	  } else {
@@ -192,29 +192,21 @@
 	  }
 	}
 
-	// let breakTime;
-	// let focusTime;
-
-	function setCustomBreak(breakTime) {
+	function setCustomBreak (breakTime) {
 	  let customBreak = parseInt($breakTimeInput.val());
 	  if (customBreak !== '' && customBreak > 0) { breakTime = customBreak; }
 	  else { breakTime = 5; }
 	  return breakTime;
 	}
 
-	function setCustomFocus(focusTime) {
+	function setCustomFocus (focusTime) {
 	  let customFocus = parseInt($focusTimeInput.val());
 	  if (customFocus !== '' && customFocus > 0) { focusTime = customFocus; }
 	  else { focusTime = 25; }
 	  return focusTime;
 	}
 
-	function displayClock(seconds, time) {
-	  let timeDisplay = time.changeSecondsToTime(seconds);
-	  $displayCountDown.html(timeDisplay);
-	}
-
-	function initiateNextTimer() {
+	function initiateNextTimer () {
 	  let seconds;
 	  let currentTimer = Pomodoro.pomodoros[0];
 
@@ -246,7 +238,7 @@
 	  }
 	}
 
-	function countDown(seconds, time){
+	function countDown (seconds, time){
 	  if (time.state === 'running') {
 	    displayClock(seconds, time);
 	    finalCountDown();
@@ -260,7 +252,7 @@
 	showStartButton();
 	showCurrentDate();
 
-	$startButton.on('click', function() {
+	$startButton.on('click', function () {
 	  Pomodoro.createFocusTimer(setCustomFocus());
 	  let currentTimer = Pomodoro.pomodoros[0];
 	  currentTimer.start();
@@ -272,14 +264,14 @@
 	  Pomodoro.save();
 	});
 
-	$pauseButton.on('click', function() {
+	$pauseButton.on('click', function () {
 	  let currentTimer = Pomodoro.pomodoros[0];
 	  currentTimer.changeStateToPaused();
 	  showResumeButton();
 	  Pomodoro.save();
 	});
 
-	$resumeButton.on('click', function() {
+	$resumeButton.on('click', function () {
 	  showPauseButton();
 	  Pomodoro.get();
 	  let currentTimer = Pomodoro.pomodoros[0];
@@ -291,11 +283,11 @@
 	  countDown(seconds, currentTimer);
 	});
 
-	$breakTimeInput.on('keyup', function(){
+	$breakTimeInput.on('keyup', function () {
 	  setCustomBreak();
 	});
 
-	$focusTimeInput.on('keyup', function(){
+	$focusTimeInput.on('keyup', function () {
 	  setCustomFocus();
 	});
 
@@ -24656,7 +24648,7 @@
 
 
 	// module
-	exports.push([module.id, "#setting-menu {\n  background-color: #FFF;\n  display: flex;\n  height: 12vh;\n  justify-content: space-around;\n  opacity: .8;\n  z-index: 4; }\n\n#focus-time-input,\n#break-time-input {\n  border: 1px solid #3D3D3D;\n  border-radius: 5px;\n  height: 4vh;\n  margin-top: 30px;\n  text-align: center;\n  width: 30%; }\n\nbody {\n  background-color: #FFF transparent;\n  background: url(/lib/img/garden.png) no-repeat;\n  background-position: top;\n  margin: 0;\n  padding: 0; }\n\nmain {\n  align-items: center;\n  display: flex;\n  flex-direction: column;\n  height: 85vh;\n  justify-content: center; }\n\n.timer-button {\n  border: 1px solid #400D29;\n  align-items: center;\n  background-color: #A6215F;\n  border-radius: 50%;\n  display: flex;\n  flex-direction: column;\n  height: 40vh;\n  justify-content: center;\n  width: 40vh; }\n  .timer-button:hover {\n    border: 7px solid #400D29;\n    opacity: .8; }\n\n.break {\n  border: 1px solid #014023;\n  background-color: #02733E; }\n  .break:hover {\n    border: 7px solid #014023;\n    opacity: .8; }\n\n.final-seconds {\n  border: 7px solid #A6215F;\n  align-items: center;\n  background-color: #400D29;\n  border-radius: 50%;\n  display: flex;\n  flex-direction: column;\n  height: 40vh;\n  justify-content: center;\n  width: 40vh; }\n\n.display-count-down {\n  font-family: \"Rozha One\", serif;\n  font-size: 4.5rem;\n  margin: 0px;\n  padding: 0px; }\n\n.display-action {\n  color: #FFF;\n  font-family: \"Alegreya Sans\", sans-serif;\n  font-size: 1.5rem;\n  margin: 0px;\n  opacity: .9;\n  padding: 0px; }\n\nq {\n  color: #400D29;\n  font-family: \"Alegreya Sans\", sans-serif;\n  font-size: 1.4rem;\n  padding-top: 7%;\n  text-align: center;\n  width: 90%; }\n\n#date {\n  border: 1px solid black;\n  background-color: rgba(255, 255, 255, 0.8);\n  height: 30px;\n  margin-top: 50px;\n  padding-bottom: 3px;\n  width: 30px; }\n\n#month, #day {\n  align-items: center;\n  display: flex;\n  font-family: \"Alegreya Sans\", sans-serif;\n  font-size: .8rem;\n  font-weight: bold;\n  justify-content: center;\n  margin: 0; }\n\nfooter {\n  align-content: center;\n  background-color: #A6215F;\n  font-family: \"Alegreya Sans\", sans-serif;\n  height: 5vh; }\n\n@media screen and (min-width: 550px) {\n  #setting-menu {\n    justify-content: space-around; }\n  .settings-link {\n    margin: 30px 0 0 30px;\n    padding: 40px; }\n  #focus-time-input,\n  #break-time-input {\n    font-size: 1.3rem;\n    height: 4vh;\n    margin: 30px 10px 0 0;\n    width: 30%; }\n  .display-action {\n    font-size: 2rem; }\n  .display-count-down {\n    font-size: 7rem; }\n  q {\n    font-size: 2.5rem; }\n  #date {\n    height: 60px;\n    width: 60px; }\n  #month, #day {\n    font-size: 1.3rem; }\n  #month {\n    padding-top: 5px; } }\n", ""]);
+	exports.push([module.id, "#setting-menu {\n  background-color: #FFF;\n  display: flex;\n  height: 12vh;\n  justify-content: space-around;\n  opacity: .8;\n  z-index: 4; }\n\n#focus-time-input,\n#break-time-input {\n  border: 1px solid #3D3D3D;\n  border-radius: 5px;\n  height: 4vh;\n  margin-top: 30px;\n  text-align: center;\n  width: 30%; }\n\nbody {\n  background-color: #FFF transparent;\n  background: url(/lib/img/garden.png) no-repeat;\n  background-position: top;\n  margin: 0;\n  padding: 0; }\n\nmain {\n  align-items: center;\n  display: flex;\n  flex-direction: column;\n  height: 85vh;\n  justify-content: center; }\n\n.timer-button {\n  border: 1px solid #400D29;\n  align-items: center;\n  background-color: #A6215F;\n  border-radius: 50%;\n  display: flex;\n  flex-direction: column;\n  height: 40vh;\n  justify-content: center;\n  width: 40vh; }\n  .timer-button:hover {\n    border: 7px solid #400D29;\n    opacity: .8; }\n\n.break {\n  border: 1px solid #014023;\n  background-color: #02733E; }\n  .break:hover {\n    border: 7px solid #014023;\n    opacity: .8; }\n\n.final-seconds {\n  border: 7px solid #A6215F;\n  align-items: center;\n  background-color: #400D29;\n  border-radius: 50%;\n  display: flex;\n  flex-direction: column;\n  height: 40vh;\n  justify-content: center;\n  width: 40vh; }\n\n.display-count-down {\n  font-family: \"Rozha One\", serif;\n  font-size: 4.5rem;\n  margin: 0px;\n  padding: 0px; }\n\n.display-action {\n  color: #FFF;\n  font-family: \"Alegreya Sans\", sans-serif;\n  font-size: 1.5rem;\n  margin: 0px;\n  opacity: .9;\n  padding: 0px; }\n\nq {\n  color: #400D29;\n  font-family: \"Alegreya Sans\", sans-serif;\n  font-size: 1.4rem;\n  padding-top: 7%;\n  text-align: center;\n  width: 90%; }\n\n#date {\n  border: 1px solid black;\n  background-color: rgba(255, 255, 255, 0.8);\n  height: 30px;\n  margin-top: 50px;\n  padding-bottom: 3px;\n  width: 30px; }\n\n#month, #day {\n  align-items: center;\n  display: flex;\n  font-family: \"Alegreya Sans\", sans-serif;\n  font-size: .8rem;\n  font-weight: bold;\n  justify-content: center;\n  margin: 0; }\n\nfooter {\n  align-content: center;\n  background-color: #A6215F;\n  font-family: \"Alegreya Sans\", sans-serif;\n  height: 5vh; }\n\n@media screen and (min-width: 550px) {\n  #setting-menu {\n    justify-content: space-around; }\n  .settings-link {\n    margin: 30px 0 0 30px;\n    padding: 40px; }\n  #focus-time-input,\n  #break-time-input {\n    font-size: 1.1rem;\n    height: 4vh;\n    margin: 30px 10px 0 0;\n    width: 30%; }\n  .display-action {\n    font-size: 2rem; }\n  q {\n    font-size: 2.5rem; }\n  #date {\n    height: 60px;\n    width: 60px; }\n  #month, #day {\n    font-size: 1.3rem; }\n  #month {\n    padding-top: 5px; } }\n", ""]);
 
 	// exports
 
