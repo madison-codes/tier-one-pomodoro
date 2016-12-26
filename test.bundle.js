@@ -137,40 +137,40 @@
 
 	const Timer = __webpack_require__(1);
 
-	var pomodorosLength = 8;
-	var workCount = 0;
+	let pomodorosLength = 8;
+	let workCount = 0;
 
 	const Pomodoro = {
 	  pomodoros: [],
 
-	  clean: function() {
+	  clean: () =>  {
 	    this.pomodoros = this.pomodoros.slice(0, pomodorosLength);
 	  },
 
-	  longBreak: function() {
-	    for (var i = 0; i < this.pomodoros.length; i++) {
+	  longBreak: () =>  {
+	    for (let i = 0; i < this.pomodoros.length; i++) {
 	      if (this.pomodoros[i].session === 'work') { workCount++; }
 	    }
 	    return (workCount % 4 === 0);
 	  },
 
-	  createBreakTimer: function(duration) {
+	  createBreakTimer: function (duration) {
 	    this.pomodoros.unshift(new Timer(duration,'rest'));
 	  },
 
-	  createFocusTimer: function(duration) {
+	  createFocusTimer: function (duration) {
 	    this.pomodoros.unshift(new Timer(duration, 'work'));
 	  },
 
-	  createLongBreakTimer: function(duration) {
+	  createLongBreakTimer: function (duration) {
 	    this.pomodoros.unshift(new Timer(duration * 3, 'rest'));
 	  },
 
-	  save: function() {
+	  save: () => {
 	    localStorage.setItem('pomodoros', JSON.stringify(this.pomodoros));
 	  },
 
-	  get: function(){
+	  get: () => {
 	    return JSON.parse(localStorage.getItem('pomodoros'));
 	  },
 	};
