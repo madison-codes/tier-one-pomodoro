@@ -140,48 +140,50 @@
 	const $month = $('#month');
 	const $day = $('#day');
 
-	function showCurrentDate() {
+	function showCurrentDate () {
 	  $month.html(moment().format('MMM').toUpperCase());
 	  $day.html(moment().format('DD '));
 	}
 
-	function showPauseButton() {
+	function showPauseButton () {
 	  $resumeButton.hide();
 	  $startButton.hide();
 	  $pauseButton.show();
 	}
 
-	function showStartButton() {
+	function showStartButton () {
 	  $resumeButton.hide();
 	  $pauseButton.hide();
 	  $startButton.show();
 	}
 
-	function showResumeButton() {
+	function showResumeButton () {
 	  $pauseButton.hide();
 	  $startButton.hide();
 	  $resumeButton.show();
 	}
 
-	function displayClock(seconds, time) {
-	  var timeDisplay = time.changeSecondsToTime(seconds);
+	function displayClock (seconds, time) {
+	  let timeDisplay = time.changeSecondsToTime(seconds);
 	  $displayCountDown.html(timeDisplay);
 	}
 
-	function addBreakClass() {
+	function addBreakClass () {
 	  $timerButton.addClass('break');
 	}
 
-	function removeBreakClass() {
+	function removeBreakClass () {
 	  $timerButton.removeClass('break');
 	}
 
-	function finalCountDown() {
-	  var currentTimer = Pomodoro.pomodoros[0];
+	function finalCountDown () {
+	  let currentTimer = Pomodoro.pomodoros[0];
 	  let endSound = new Audio('/sounds/end-time.wav');
 	  let intervalSound = new Audio('/sounds/interval-time.wav');
 
-	  if (currentTimer.remaining() <= 20000) { $timerButton.addClass('final-seconds');}
+	  if (currentTimer.remaining() <= 20000) {
+	    $timerButton.addClass('final-seconds');
+	  }
 	  if (currentTimer.remaining() <= 20000 && currentTimer.timeRemaining % 5 === 0) {
 	    intervalSound.play();}
 	  if (currentTimer.isExpired()) {
@@ -190,31 +192,31 @@
 	  }
 	}
 
-	var breakTime;
-	var focusTime;
+	// let breakTime;
+	// let focusTime;
 
 	function setCustomBreak(breakTime) {
-	  var customBreak = parseInt($breakTimeInput.val());
+	  let customBreak = parseInt($breakTimeInput.val());
 	  if (customBreak !== '' && customBreak > 0) { breakTime = customBreak; }
 	  else { breakTime = 5; }
 	  return breakTime;
 	}
 
 	function setCustomFocus(focusTime) {
-	  var customFocus = parseInt($focusTimeInput.val());
+	  let customFocus = parseInt($focusTimeInput.val());
 	  if (customFocus !== '' && customFocus > 0) { focusTime = customFocus; }
 	  else { focusTime = 25; }
 	  return focusTime;
 	}
 
 	function displayClock(seconds, time) {
-	  var timeDisplay = time.changeSecondsToTime(seconds);
+	  let timeDisplay = time.changeSecondsToTime(seconds);
 	  $displayCountDown.html(timeDisplay);
 	}
 
 	function initiateNextTimer() {
-	  var seconds;
-	  var currentTimer = Pomodoro.pomodoros[0];
+	  let seconds;
+	  let currentTimer = Pomodoro.pomodoros[0];
 
 	  if (currentTimer.session === 'work' && currentTimer.isExpired()) {
 	    Pomodoro.createBreakTimer(setCustomBreak());
@@ -248,7 +250,7 @@
 	  if (time.state === 'running') {
 	    displayClock(seconds, time);
 	    finalCountDown();
-	    var remaining = (time.remaining() / 1000);
+	    let remaining = (time.remaining() / 1000);
 	    if(!time.isExpired()) {
 	      setTimeout(countDown, 1000, remaining, time);
 	    }
@@ -260,18 +262,18 @@
 
 	$startButton.on('click', function() {
 	  Pomodoro.createFocusTimer(setCustomFocus());
-	  var currentTimer = Pomodoro.pomodoros[0];
+	  let currentTimer = Pomodoro.pomodoros[0];
 	  currentTimer.start();
 	  currentTimer.changeStateToRunning();
 	  currentTimer.end();
-	  var seconds = currentTimer.remaining() / 1000;
+	  let seconds = currentTimer.remaining() / 1000;
 	  showPauseButton();
 	  countDown(seconds, currentTimer);
 	  Pomodoro.save();
 	});
 
 	$pauseButton.on('click', function() {
-	  var currentTimer = Pomodoro.pomodoros[0];
+	  let currentTimer = Pomodoro.pomodoros[0];
 	  currentTimer.changeStateToPaused();
 	  showResumeButton();
 	  Pomodoro.save();
@@ -280,11 +282,11 @@
 	$resumeButton.on('click', function() {
 	  showPauseButton();
 	  Pomodoro.get();
-	  var currentTimer = Pomodoro.pomodoros[0];
+	  let currentTimer = Pomodoro.pomodoros[0];
 	  currentTimer.resumeRemaining();
 	  currentTimer.start();
 	  currentTimer.changeStateToRunning();
-	  var seconds = currentTimer.timeRemaining / 1000;
+	  let seconds = currentTimer.timeRemaining / 1000;
 	  Pomodoro.save();
 	  countDown(seconds, currentTimer);
 	});
@@ -10530,40 +10532,40 @@
 
 	const Timer = __webpack_require__(1);
 
-	var pomodorosLength = 8;
-	var workCount = 0;
+	let pomodorosLength = 8;
+	let workCount = 0;
 
 	const Pomodoro = {
 	  pomodoros: [],
 
-	  clean: function() {
+	  clean: () =>  {
 	    this.pomodoros = this.pomodoros.slice(0, pomodorosLength);
 	  },
 
-	  longBreak: function() {
-	    for (var i = 0; i < this.pomodoros.length; i++) {
+	  longBreak: () =>  {
+	    for (let i = 0; i < this.pomodoros.length; i++) {
 	      if (this.pomodoros[i].session === 'work') { workCount++; }
 	    }
 	    return (workCount % 4 === 0);
 	  },
 
-	  createBreakTimer: function(duration) {
+	  createBreakTimer: function (duration) {
 	    this.pomodoros.unshift(new Timer(duration,'rest'));
 	  },
 
-	  createFocusTimer: function(duration) {
+	  createFocusTimer: function (duration) {
 	    this.pomodoros.unshift(new Timer(duration, 'work'));
 	  },
 
-	  createLongBreakTimer: function(duration) {
+	  createLongBreakTimer: function (duration) {
 	    this.pomodoros.unshift(new Timer(duration * 3, 'rest'));
 	  },
 
-	  save: function() {
+	  save: () => {
 	    localStorage.setItem('pomodoros', JSON.stringify(this.pomodoros));
 	  },
 
-	  get: function(){
+	  get: () => {
 	    return JSON.parse(localStorage.getItem('pomodoros'));
 	  },
 	};
@@ -24654,7 +24656,7 @@
 
 
 	// module
-	exports.push([module.id, "#setting-menu {\n  background-color: #FFF;\n  display: flex;\n  height: 12vh;\n  justify-content: space-between;\n  opacity: .8;\n  z-index: 4; }\n\n#focus-time-input,\n#break-time-input {\n  border: 1px solid #3D3D3D;\n  border-radius: 5px;\n  height: 4vh;\n  margin: 20px 10px 0 0;\n  text-align: center;\n  width: 30%; }\n\nbody {\n  background: url(/lib/img/garden.png) no-repeat;\n  background-color: #FFF transparent;\n  background-position: top;\n  margin: 0;\n  padding: 0; }\n\nmain {\n  align-items: center;\n  display: flex;\n  flex-direction: column;\n  height: 85vh;\n  justify-content: center; }\n\n.timer-button {\n  border: 1px solid #400D29;\n  align-items: center;\n  background-color: #A6215F;\n  border-radius: 50%;\n  display: flex;\n  flex-direction: column;\n  height: 40vh;\n  justify-content: center;\n  width: 40vh; }\n  .timer-button:hover {\n    border: 7px solid #400D29;\n    opacity: .8; }\n\n.break {\n  border: 1px solid #014023;\n  background-color: #02733E; }\n  .break:hover {\n    border: 7px solid #014023;\n    opacity: .8; }\n\n.final-seconds {\n  border: 7px solid #A6215F;\n  align-items: center;\n  background-color: #400D29;\n  border-radius: 50%;\n  display: flex;\n  flex-direction: column;\n  height: 40vh;\n  justify-content: center;\n  width: 40vh; }\n\n.display-count-down {\n  font-family: \"Rozha One\", serif;\n  font-size: 5rem;\n  margin: 0px;\n  padding: 0px; }\n\n.display-action {\n  color: #FFF;\n  font-family: \"Alegreya Sans\", sans-serif;\n  font-size: 1.5rem;\n  margin: 0px;\n  margin-top: -25px;\n  opacity: .9;\n  padding: 0px; }\n\nq {\n  color: #400D29;\n  font-family: \"Alegreya Sans\", sans-serif;\n  font-size: 1.4rem;\n  padding-top: 7%;\n  text-align: center;\n  width: 90%; }\n\n#date {\n  border: 1px solid black;\n  background-color: rgba(255, 255, 255, 0.8);\n  height: 30px;\n  margin-top: 50px;\n  padding-bottom: 3px;\n  width: 30px; }\n\n#month, #day {\n  align-items: center;\n  display: flex;\n  font-family: \"Alegreya Sans\", sans-serif;\n  font-size: .8rem;\n  font-weight: bold;\n  justify-content: center;\n  margin: 0; }\n\nfooter {\n  align-content: center;\n  background-color: #A6215F;\n  font-family: \"Alegreya Sans\", sans-serif;\n  height: 5vh; }\n\n@media screen and (min-width: 550px) {\n  #setting-menu {\n    justify-content: space-around; }\n  .settings-link {\n    margin: 30px 0 0 30px;\n    padding: 40px; }\n  #focus-time-input,\n  #break-time-input {\n    font-size: 1.3rem;\n    height: 4vh;\n    margin: 30px 10px 0 0;\n    width: 30%; }\n  .display-action {\n    font-size: 2rem; }\n  .display-count-down {\n    font-size: 7rem; }\n  q {\n    font-size: 2.5rem; }\n  #date {\n    height: 60px;\n    width: 60px; }\n  #month, #day {\n    font-size: 1.3rem; }\n  #month {\n    padding-top: 5px; } }\n", ""]);
+	exports.push([module.id, "#setting-menu {\n  background-color: #FFF;\n  display: flex;\n  height: 12vh;\n  justify-content: space-around;\n  opacity: .8;\n  z-index: 4; }\n\n#focus-time-input,\n#break-time-input {\n  border: 1px solid #3D3D3D;\n  border-radius: 5px;\n  height: 4vh;\n  margin-top: 30px;\n  text-align: center;\n  width: 30%; }\n\nbody {\n  background-color: #FFF transparent;\n  background: url(/lib/img/garden.png) no-repeat;\n  background-position: top;\n  margin: 0;\n  padding: 0; }\n\nmain {\n  align-items: center;\n  display: flex;\n  flex-direction: column;\n  height: 85vh;\n  justify-content: center; }\n\n.timer-button {\n  border: 1px solid #400D29;\n  align-items: center;\n  background-color: #A6215F;\n  border-radius: 50%;\n  display: flex;\n  flex-direction: column;\n  height: 40vh;\n  justify-content: center;\n  width: 40vh; }\n  .timer-button:hover {\n    border: 7px solid #400D29;\n    opacity: .8; }\n\n.break {\n  border: 1px solid #014023;\n  background-color: #02733E; }\n  .break:hover {\n    border: 7px solid #014023;\n    opacity: .8; }\n\n.final-seconds {\n  border: 7px solid #A6215F;\n  align-items: center;\n  background-color: #400D29;\n  border-radius: 50%;\n  display: flex;\n  flex-direction: column;\n  height: 40vh;\n  justify-content: center;\n  width: 40vh; }\n\n.display-count-down {\n  font-family: \"Rozha One\", serif;\n  font-size: 4.5rem;\n  margin: 0px;\n  padding: 0px; }\n\n.display-action {\n  color: #FFF;\n  font-family: \"Alegreya Sans\", sans-serif;\n  font-size: 1.5rem;\n  margin: 0px;\n  opacity: .9;\n  padding: 0px; }\n\nq {\n  color: #400D29;\n  font-family: \"Alegreya Sans\", sans-serif;\n  font-size: 1.4rem;\n  padding-top: 7%;\n  text-align: center;\n  width: 90%; }\n\n#date {\n  border: 1px solid black;\n  background-color: rgba(255, 255, 255, 0.8);\n  height: 30px;\n  margin-top: 50px;\n  padding-bottom: 3px;\n  width: 30px; }\n\n#month, #day {\n  align-items: center;\n  display: flex;\n  font-family: \"Alegreya Sans\", sans-serif;\n  font-size: .8rem;\n  font-weight: bold;\n  justify-content: center;\n  margin: 0; }\n\nfooter {\n  align-content: center;\n  background-color: #A6215F;\n  font-family: \"Alegreya Sans\", sans-serif;\n  height: 5vh; }\n\n@media screen and (min-width: 550px) {\n  #setting-menu {\n    justify-content: space-around; }\n  .settings-link {\n    margin: 30px 0 0 30px;\n    padding: 40px; }\n  #focus-time-input,\n  #break-time-input {\n    font-size: 1.3rem;\n    height: 4vh;\n    margin: 30px 10px 0 0;\n    width: 30%; }\n  .display-action {\n    font-size: 2rem; }\n  .display-count-down {\n    font-size: 7rem; }\n  q {\n    font-size: 2.5rem; }\n  #date {\n    height: 60px;\n    width: 60px; }\n  #month, #day {\n    font-size: 1.3rem; }\n  #month {\n    padding-top: 5px; } }\n", ""]);
 
 	// exports
 
